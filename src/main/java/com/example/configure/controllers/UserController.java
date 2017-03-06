@@ -28,10 +28,10 @@ public class UserController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(@RequestBody User user) {
         try {
-            logger.warn("data insertion in process", user.getEmail(), user.getName());
+            logger.warn("user insertion in process" + user.getEmail() + user.getName());
             User userData = new User(user.getEmail(), user.getName());
             userDao.create(userData);
-            logger.warn("data inserted successfully");
+            logger.warn("user with name " + user.getName() + " inserted successfully");
 
         } catch (Exception ex) {
             return "Error creating the user:" + ex.toString();
